@@ -51,4 +51,10 @@ describe('Sulfuras', function() {
 
     expect(sulfuras[0].quality).toEqual(80)
   })
+  it('does not pass sellIn date', function() {
+    const sulfuras = sulfurasRagnaros.updateQuality()
+
+    expect(sulfuras[0].quality).toEqual(80)
+    expect(sulfuras[0].sellIn).toEqual(1)
+  })
 })
