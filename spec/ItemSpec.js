@@ -84,4 +84,13 @@ describe('Backstage passes', function() {
     expect(backstage[0].sellIn).toEqual(4)
     expect(backstage[0].quality).toEqual(38)
   })
+  it('Qualtiy drops to 0 after the concert', function() {
+    for ( i = 0; i < 4; i++) {
+      backstagePass.updateQuality()
+    }
+    const backstage = backstagePass.updateQuality()
+
+    expect(backstage[0].sellIn).toEqual(-1)
+    expect(backstage[0].quality).toEqual(0)
+  })
 })
