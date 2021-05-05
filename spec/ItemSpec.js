@@ -14,5 +14,6 @@ describe('A normal item with two days to sell and a quality of 10', function() {
     const normalItem = new Shop([ new Item("Bagel", 2, 10)]);
     const items = normalItem.updateQuality();
     expect(items[0].quality).toEqual(9)
+    expect(items[0].sellIn).toEqual(1)
   })
 })
