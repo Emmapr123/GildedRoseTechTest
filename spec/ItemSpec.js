@@ -33,13 +33,13 @@ describe('A normal item with two days to sell and a quality of 10', function() {
 })
 
 describe('Aged Brie', function() {
-  const agedBrie = new Shop([ new Item("Aged Brie", 2, 0)])
+  const agedBrie = new Shop([ new Item("Aged Brie", 6, 0)])
 
   it('increases in quality over time', function() {
     const brie = agedBrie.updateQuality()
 
     expect(brie[0].quality).toEqual(1)
-    expect(brie[0].sellIn).toEqual(1)
+    expect(brie[0].sellIn).toEqual(5)
   })
 })
 
@@ -74,5 +74,14 @@ describe('Backstage passes', function() {
 
     expect(backstage[0].sellIn).toEqual(9)
     expect(backstage[0].quality).toEqual(27)
+  })
+  it('quality increases by 3 when the concert is less than 5 days away', function() {
+    for ( i = 0; i < 4; i++) {
+      backstagePass.updateQuality()
+    }
+    const backstage = backstagePass.updateQuality()
+
+    expect(backstage[0].sellIn).toEqual(4)
+    expect(backstage[0].quality).toEqual(38)
   })
 })
