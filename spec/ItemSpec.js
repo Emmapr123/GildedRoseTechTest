@@ -58,3 +58,12 @@ describe('Sulfuras', function() {
     expect(sulfuras[0].sellIn).toEqual(1)
   })
 })
+
+describe('Backstage passes', function() {
+  const backstagePass = new Shop([new Item("Backstage passes to a TAFKAL80ETC concert", 15, 20)])
+  it('increases in quality nearer to its sell by date', function() {
+    const backstage = backstagePass.updateQuality()
+
+    expect(backstage[0].quality).toEqual(21)
+  })
+})
