@@ -23,4 +23,11 @@ describe('A normal item with two days to sell and a quality of 10', function() {
     expect(items[0].sellIn).toEqual(-1)
     expect(items[0].quality).toEqual(6)
   })
+  it('Quality of an item can never be negative', function() {
+    for( i = 0; i < 2; i++) {
+      normalItem.updateQuality()
+    }
+    const items = normalItem.updateQuality()
+    expect(items[0].quality).toEqual(0)
+  })
 })
