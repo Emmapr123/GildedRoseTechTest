@@ -10,6 +10,7 @@ class Shop {
   constructor(items=[]){
     this.items = items;
     this.minQuality = 0
+    this.maxQuality = 50
   }
   updateQuality() {
     for (var i = 0; i < this.items.length; i++) {
@@ -31,20 +32,10 @@ class Shop {
     this.items[0].sellIn -= 1;
   }
   updateQualityBackstagePass() {
-    const MaxQuality = 50
-    console.log(this.items[0].quality)
-    if (this.items[0].quality < MaxQuality) {
-      this.items[0].quality = this.items[0].quality + 1;
-      if (this.items[0].sellIn < 11) {
-        if (this.items[0].quality < MaxQuality) {
-          this.items[0].quality = this.items[0].quality + 1;
-        }
-      }
-      if (this.items[0].sellIn < 6) {
-        if (this.items[0].quality < MaxQuality) {
-          this.items[0].quality = this.items[0].quality + 1;
-        }
-      }
+    if (this.items[0].quality < this.maxQuality) {
+      if (this.items[0].sellIn > 10) { this.items[0].quality = this.items[0].quality + 1; 
+      } else if (this.items[0].sellIn < 6) { this.items[0].quality = this.items[0].quality + 3; 
+      } else { this.items[0].quality = this.items[0].quality + 2; }
     }
     this.items[0].sellIn -= 1;
     if (this.items[0].sellIn < 0) {
