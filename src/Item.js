@@ -13,12 +13,12 @@ class Shop {
     this.maxQuality = 50
   }
   updateQuality() {
-    for (var i = 0; i < this.items.length; i++) {
-      if (this.items[i].name == 'Aged Brie') { this.updateQualityAgedBrie(i) 
-      } else if (this.items[i].name == 'Backstage passes to a TAFKAL80ETC concert') { this.updateQualityBackstagePass(i) 
-      } else if (this.items[i].name == 'Sulfuras, Hand of Ragnaros') { return this.items
-      } else { this.updateQualityRegularItem(i) }
-    }
+    this.items.forEach((item, index) => {
+      if (item.name == 'Aged Brie') { this.updateQualityAgedBrie(index) 
+      } else if (item.name == 'Backstage passes to a TAFKAL80ETC concert') { this.updateQualityBackstagePass(index) 
+      } else if (item.name == 'Sulfuras, Hand of Ragnaros') { return item
+      } else { this.updateQualityRegularItem(index) }
+    })
    
     return this.items;
   }
