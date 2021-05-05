@@ -31,3 +31,12 @@ describe('A normal item with two days to sell and a quality of 10', function() {
     expect(items[0].quality).toEqual(0)
   })
 })
+
+describe('Aged Brie', function() {
+  const agedBrie = new Shop([ new Item("Aged Brie", 2, 0)])
+  it('increases in quality over time', function() {
+    const brie = agedBrie.updateQuality()
+
+    expect(brie[0].quality).toEqual(1)
+  })
+})
