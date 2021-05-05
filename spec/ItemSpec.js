@@ -66,4 +66,13 @@ describe('Backstage passes', function() {
 
     expect(backstage[0].quality).toEqual(21)
   })
+  it('quality increases by 2 if the consert is less than 10 days away', function() {
+    for ( i = 0; i < 4; i++) {
+      backstagePass.updateQuality()
+    }
+    const backstage = backstagePass.updateQuality()
+
+    expect(backstage[0].sellIn).toEqual(9)
+    expect(backstage[0].quality).toEqual(27)
+  })
 })
