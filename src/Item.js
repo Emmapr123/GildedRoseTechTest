@@ -9,6 +9,7 @@ class Item {
 class Shop {
   constructor(items=[]){
     this.items = items;
+    this.minQuality = 0
   }
   updateQuality() {
     for (var i = 0; i < this.items.length; i++) {
@@ -51,11 +52,9 @@ class Shop {
     }
   }
   updateQualityRegularItem() {
-    const MinQuality = 0
-
-    if (this.items[0].quality > MinQuality) { this.items[0].quality = this.items[0].quality - 1 }
+    if (this.items[0].quality > this.minQuality) { this.items[0].quality = this.items[0].quality - 1 }
     this.items[0].sellIn = this.items[0].sellIn - 1;
-    if (this.items[0].sellIn < 0 && this.items[0].quality > MinQuality) {
+    if (this.items[0].sellIn < 0 && this.items[0].quality > this.minQuality) {
           this.items[0].quality = this.items[0].quality - 1;
     }
   }
