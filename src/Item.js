@@ -29,7 +29,7 @@ class Shop {
   updateQualityBackstagePass() {
     if (this.items[0].quality < this.maxQuality) {
       if (this.items[0].sellIn > 10) { this.increaseQuality(1); } 
-      else if (this.items[0].sellIn < 6) { this.increaseQuality(3); } 
+      else if (this.items[0].sellIn <= 5) { this.increaseQuality(3); } 
       else { this.increaseQuality(2); }
     }
 
