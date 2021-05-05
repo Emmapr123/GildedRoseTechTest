@@ -24,7 +24,7 @@ describe('A normal item with two days to sell and a quality of 10', function() {
     expect(items[0].quality).toEqual(6)
   })
   it('Quality of an item can never be negative', function() {
-    for( i = 0; i < 2; i++) {
+    for( i = 0; i < 3; i++) {
       normalItem.updateQuality()
     }
     const items = normalItem.updateQuality()
@@ -33,13 +33,18 @@ describe('A normal item with two days to sell and a quality of 10', function() {
 })
 
 describe('Aged Brie', function() {
-  const agedBrie = new Shop([ new Item("Aged Brie", 6, 0)])
-
   it('increases in quality over time', function() {
+    const agedBrie = new Shop([ new Item("Aged Brie", 6, 0)])
     const brie = agedBrie.updateQuality()
 
     expect(brie[0].quality).toEqual(1)
     expect(brie[0].sellIn).toEqual(5)
+  })
+  it('the quality can never be over 50', function() {
+    const agedBrie = new Shop([ new Item('Aged Brie', 6, 50)])
+    const brie = agedBrie.updateQuality()
+
+    expect(brie[0].quality).toEqual(50)
   })
 })
 
@@ -92,5 +97,11 @@ describe('Backstage passes', function() {
 
     expect(backstage[0].sellIn).toEqual(-1)
     expect(backstage[0].quality).toEqual(0)
+  })
+  it('Quality can never be over 50', function() {
+    const backstagePass = new Shop([ new Item("Backstage passes to a TAFKAL80ETC concert", 15, 50)])
+    const pass = backstagePass.updateQuality()
+
+    expect(pass[0].quality).toEqual(50)
   })
 })
