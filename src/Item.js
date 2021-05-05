@@ -23,12 +23,7 @@ class Shop {
   return this.items;
   }
   updateQualityAgedBrie() {
-    const MaxQuality = 50
-
-    if (this.items[0].quality < MaxQuality) {
-      this.items[0].quality = this.items[0].quality += 1;
-    }
-
+    if (this.items[0].quality < this.maxQuality) {this.items[0].quality = this.items[0].quality += 1;}
     this.items[0].sellIn -= 1;
   }
   updateQualityBackstagePass() {
