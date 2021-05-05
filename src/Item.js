@@ -38,9 +38,10 @@ class Shop {
       } else { this.items[0].quality = this.items[0].quality + 2; }
     }
     this.items[0].sellIn -= 1;
-    if (this.items[0].sellIn < 0) {
-      this.items[0].quality = this.items[0].quality - this.items[0].quality;
-    }
+    if (this.items[0].sellIn < 0) { this.setQualityToZero() }
+  }
+  setQualityToZero() {
+    this.items[0].quality = this.items[0].quality - this.items[0].quality;
   }
   updateQualityRegularItem() {
     if (this.items[0].quality > this.minQuality) { this.items[0].quality = this.items[0].quality - 1 }
