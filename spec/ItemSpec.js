@@ -34,9 +34,21 @@ describe('A normal item with two days to sell and a quality of 10', function() {
 
 describe('Aged Brie', function() {
   const agedBrie = new Shop([ new Item("Aged Brie", 2, 0)])
+
   it('increases in quality over time', function() {
     const brie = agedBrie.updateQuality()
 
     expect(brie[0].quality).toEqual(1)
+    expect(brie[0].sellIn).toEqual(1)
+  })
+})
+
+describe('Sulfuras', function() {
+  const sulfurasRagnaros = new Shop([ new Item("Sulfuras, Hand of Ragnaros", 1, 80)])
+  
+  it('Never loses quality', function() {
+    const sulfuras = sulfurasRagnaros.updateQuality()
+
+    expect(sulfuras[0].quality).toEqual(80)
   })
 })
