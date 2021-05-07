@@ -104,4 +104,11 @@ describe('ConjuredItems', function() {
     expect(magic[0].sellIn).toEqual(14)
     expect(magic[0].quality).toEqual(38)
   })
+  it('Decreases twice as fast as regular items, after sell by date', function() {
+    const conjured = new Shop([ new Item('Conjured item', 0, 40)])
+    const magic = conjured.updateQuality()
+
+    expect(magic[0].sellIn).toEqual(-1)
+    expect(magic[0].quality).toEqual(36)
+  })
 })
