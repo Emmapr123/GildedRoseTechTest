@@ -95,3 +95,13 @@ describe('Backstage passes', function() {
     expect(pass[0].quality).toEqual(50)
   })
 })
+
+describe('ConjuredItems', function() {
+  it('Degrades in quality twice as fast as a normal Item', function() {
+    const conjured = new Shop([ new Item('Conjured item', 15, 40)])
+    const magic = conjured.updateQuality()
+
+    expect(magic[0].sellIn).toEqual(14)
+    expect(magic[0].quality).toEqual(38)
+  })
+})
